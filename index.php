@@ -1,13 +1,12 @@
 
  Customer:
-- ID -- INT -- PRIMARY KEY [AUTO_INCREMENT, UNIQUE]
 - Name -- VARCHAR(20) -- NOT NULL
-- Cognome -- VARCHAR(20) -- NOT NULL
-- indirizzo -- VARCHAR(40) -- NOT NULL
+- Cognome -- PRIMARY KEY -- VARCHAR(20) -- NOT NULL
+- Indirizzo -- VARCHAR(40) -- NOT NULL
 - Città -- VARCHAR(30) -- NOT NULL
 - Regione -- VARCHAR(30) -- NOT NULL
 - Stato -- VARCHAR(30) -- NOT NULL
-- mail -- VARCHAR(50) -- NOT NULL
+- Mail -- VARCHAR(50) -- NOT NULL
 - Tel -- INT -- NOT NULL
 - Carta_di_credito -- VARCHAR(40) -- NOT NULL
 - Numero_carta -- INT -- NOT NULL
@@ -18,8 +17,8 @@
 
 
 Room:
-- RoomNum -- INT -- PRIMARY KEY
-- Type -- VARCHAR(40) -- NOT NULL
-- PriceBase -- FLOAT(6, 2) -- NOT NULL
-- PricePerAdult -- FLOAT(6, 2) -- NOT NULL
-- PricePerChild -- FLOAT(6, 2) -- NOT NULL
+- Numero_stanza -- INT -- PRIMARY KEY
+- Tipologia -- VARCHAR(40) -- NOT NULL
+- Prezzo -- FLOAT(6, 2) -- NOT NULL
+- PezzoAdulti -- FLOAT(6, 2) -- NOT NULL
+- PrezzoBambini -- FLOAT(6, 2) -- NOT NULL
