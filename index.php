@@ -1,33 +1,44 @@
+HOTEL:
 
- Customer:
-- Name -- VARCHAR(20) -- NOT NULL
-- Cognome -- PRIMARY KEY -- VARCHAR(20) -- NOT NULL
-- Indirizzo -- VARCHAR(40) -- NOT NULL
-- Città -- VARCHAR(30) -- NOT NULL
-- Regione -- VARCHAR(30) -- NOT NULL
-- Stato -- VARCHAR(30) -- NOT NULL
-- Mail -- VARCHAR(50) -- NOT NULL
-- Tel -- INT -- NOT NULL
-- Carta_di_credito -- VARCHAR(40) -- NOT NULL
-- Numero_carta -- INT -- NOT NULL
-- Scadenza_carta -- DATE
-- CheckIn -- DATETIME
-- Commenti -- VARCHAR(50)
+ROOM:
+-ID -- INT -- PRIMARY KEY, AUTO_INCREMENT
+- Numero_stanza -- SMALLINT -- UNIQUE, NOT NULL
+- Tipologia -- VARCHAR(20)
+- Disponibilità -- TINYINT -- DEFAULT(0) --
+- Prezzon -- FLOAT(6, 2) -- NULLABLE
+- animale -- TINYINT -- DEFAULT(0)
+- servicess -- VARCHAR(255)
 
-|  Name  | Cognome | Indirizzo | Città | Regione | Stato | Mail  | Tel | Carta_di_credito  | Numero_carta  | Scadenza_carta  | CheckIn | Commenti  |
----------------------------------------------------------------------------------------------------------------------------------------------------
-  Pippo    Russo
-  Marco    Medic
-Room:
-- Numero_stanza -- INT -- PRIMARY KEY
-- Tipologia -- VARCHAR(40) -- NOT NULL
-- Prezzo -- FLOAT(6, 2) -- NOT NULL
-- PezzoAdulti -- FLOAT(6, 2) -- NOT NULL
-- PrezzoBambini -- FLOAT(6, 2) -- NOT NULL
+PERSON:
+-ID -- INT -- PRIMARY KEY, AUTO_INCREMENT
+- Nome -- VARCHAR(30) -- NOT NULL
+- Cognome -- VARCHAR(30) -- NOT NULL
+- d.id -- VARCHAR(20) -- NOT NULL
+- d.id-tipo -- VARCHAR(10) -- NOT NULL
+- data di nascita -- DATE -- NOT NULL
+- tel -- VARCHAR(25) -- NULLABLE, UNIQUE
 
-|  Numero_stanza  | Tipologia | Prezzo | PrezzoAdulti | PrezzoBambini | Cognome_user|
+RESERVATION:
+-ID -- INT -- PRIMARY KEY, AUTO_INCREMENT
+- pagato -- TINYINT -- DEFAULT(0)
+- dataDiInizio -- DATE -- NOT NULL
+- dataDiFine -- DATE -- NOT NULL
+- canale -- VARCHAR(20)
+- dataCancellazioneGratuita -- DATE
+- Prezzo -- FLOAT(8, 2) -- NOT NULL
+- Sconto -- (4, 2) -- DEFAULT(0)
 
-      123            un letto                                               Russo
-      124            due letti                                              Medic
-      125            un letto                                               Russo
------------------------------------------------------------------------
+PAGAMENTO:
+-ID -- INT -- PRIMARY KEY, AUTO_INCREMENT
+- pagato -- TINYINT -- DEFAULT(0)
+- canaleDiPagamento -- VARCHAR(15) -- NOT NULL
+- dataPagamento -- DATE -- NOT NULL
+- allegati -- TEXT
+
+HOTEL: RELAZIONI
+
+  PRENOTAZIONE <---------N--<>--M--------->STANZA
+  PRENOTAZIONE <---------N--<>--M--------->PERSONA
+  STANZA <---------*--<>--*--------->PERSONA
+  PAGAMENTO <---------N--<>--1--------->PERSONA
+  PAGAMENTO <---------1--<>--1--------->PRENOTAZIONE
